@@ -42,7 +42,7 @@ namespace DicePigLatinTranslator
                 string piglatin = "";
                 foreach (string word in words) 
                 {
-                    piglatin += Translateword(word) + " ";
+                    piglatin += TranslateWordWithCaps(word) + " ";
                 }
                 txtPigLatin.Text = piglatin;
             }
@@ -51,6 +51,22 @@ namespace DicePigLatinTranslator
                 MessageBox.Show("You must enter text to be translated!", "Enter");
                 txtEnglish.Focus();
             }
+        }
+
+            private string TranslateWordWithCaps(string word)
+        {
+            string punct = "";
+            if (word.EndsWith(".") || word.EndsWith(",") || word.EndsWith(";") || word.EndsWith(":") || word.EndsWith("!") || word.EndsWith("?"))
+            {
+                punct = word.Substring(word.Length - 1);
+                word = word.Remove(word.Length - 1,1);
+
+            }
+
+            word = Translateword(word);
+            word += punct;
+            return word;
+
         }
 
             private string Translateword(string word) 
@@ -79,5 +95,7 @@ namespace DicePigLatinTranslator
             
             return word;
         }
-    }
+
+    }   
+
 }
