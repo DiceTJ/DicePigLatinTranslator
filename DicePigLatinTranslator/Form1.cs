@@ -35,16 +35,27 @@ namespace DicePigLatinTranslator
 
         private void btnTranslate_Click(object sender, EventArgs e)
         {
+            string english = txtEnglish.Text.Trim();
             if (!string.IsNullOrEmpty(txtEnglish.Text)) 
             {
-                //Do all the rules
-
+                string[] words = english.Split(' ');
+                string piglatin = "";
+                foreach (string word in words) 
+                {
+                    piglatin += Translateword(word) + " ";
+                }
+                txtPigLatin.Text = piglatin;
             }
             else
             {
                 MessageBox.Show("You must enter text to be translated!", "Enter");
                 txtEnglish.Focus();
             }
+        }
+
+            private string Translateword(string word) 
+        {
+            return word;
         }
     }
 }
