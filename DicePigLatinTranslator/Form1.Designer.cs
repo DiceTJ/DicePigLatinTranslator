@@ -82,6 +82,7 @@
             this.btnTranslate.TabIndex = 5;
             this.btnTranslate.Text = "&Translate";
             this.btnTranslate.UseVisualStyleBackColor = true;
+            this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
             // 
             // btnClear
             // 

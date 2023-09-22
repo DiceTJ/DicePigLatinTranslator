@@ -32,5 +32,19 @@ namespace DicePigLatinTranslator
             txtEnglish.Text = "";
             txtPigLatin.Text = ""; 
         }
+
+        private void btnTranslate_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtEnglish.Text)) 
+            {
+                //Do all the rules
+
+            }
+            else
+            {
+                MessageBox.Show("You must enter text to be translated!", "Enter");
+                txtEnglish.Focus();
+            }
+        }
     }
 }
