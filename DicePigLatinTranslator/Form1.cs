@@ -30,7 +30,7 @@ namespace DicePigLatinTranslator
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtEnglish.Text = "";
-            txtPigLatin.Text = "";
+            txtPigLatin.Text = ""; 
         }
     }
 }
