@@ -63,8 +63,13 @@ namespace DicePigLatinTranslator
 
             }
 
-            word = Translateword(word);
-            word += punct;
+            if (isInitialCap(word))
+                word = toInitialCap(Translateword(word));
+            if (isUpper(word))
+                word = Translateword(word).ToUpper();
+            if (isLower(word))
+                word = Translateword(word).ToLower();
+
             return word;
 
         }
@@ -96,6 +101,68 @@ namespace DicePigLatinTranslator
             return word;
         }
 
+        private bool isUpper(string word)
+        {
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (isUpper(word[i]) == false)
+                    return false;
+
+
+
+            }
+            return true;
+        }
+
+        private bool isLower(string word)
+        {
+            for(int i = 0; i < word.Length;i++)
+                if (isLower(word[i])== false)
+                    return false;
+            return true;
+
+        }
+
+        private bool isInitialCap(string word)
+        {
+            char firstLetter = word[0];
+            string otherLetters = word.Remove(0, 1);
+            if (isUpper(firstLetter) && isLower(otherLetters))
+                return true;
+            else
+                return false;
+
+
+        }
+        private bool isUpper(char c)
+        {
+            if (c >= 65 && c <= 90 || c.ToString() == "'")
+                return true;
+            else
+                return false;
+            
+
+
+        }
+
+        private bool isLower(char c)
+        {
+            if (c >= 97 && c<= 122 || c.ToString() == "'")
+                return true;
+            else
+                return false;
+
+
+        }
+
+        private string toInitialCap(string word)
+        {
+            string firstLetter = word.Substring(0, 1).ToUpper();
+            string otherLetters = word.Substring(1).ToLower();
+            return firstLetter + otherLetters;
+
+
+        }
     }   
 
 }
